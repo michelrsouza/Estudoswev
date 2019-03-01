@@ -5,9 +5,9 @@ get id(){return(this._id++)}
 }
 const produtos ={}
 
-function salvarproduto(produtos) {
+function salvarproduto(produto) {
     if(!produto.id)produto.produto=sequence.id
-    produtos[produtos.id]=produto
+    produto[produto.id]=produto
     return produto
 }
 
