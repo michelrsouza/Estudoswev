@@ -12,7 +12,7 @@ function salvarproduto(produtos) {
 }
 
 function getProduto(id){
-return produtos[id]||{}
+return produtos[id]||{} // retorn o produto pel ID ou um objeto vazio se caso não acha o produto
 
 }
 function getProdutos(){
