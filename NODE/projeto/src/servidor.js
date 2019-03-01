@@ -25,7 +25,3 @@ app.post('/produtos',(req,res,next)=>{
         }
 )
 
-app.listen(porta,()=>{
-console.log(`Servidor lalaal${porta}`)
-
-})
