@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercicios HTML</title>
+</head>
+<body>
+    <header>Exercicios Html</header>
+    <nav >
+        <a href="exercicios/texto1.html">00teste</a>
+    </nav>
+    <section id="conteudo" ></section>
+    <style>
+        #conteudo{
+            padding: 30px 0px;
+        }
+    </style>
+    <footer>
+        Curso web moderno
+        <a id="rodape" href="exercicios/teste2.html">01teste2</a>
+        <section id="rodandoope">
+           <style>
+               #rodandoope{
+               padding: 50px 10px ;
+               }
+            </style> 
+        </section>
+    </footer>
+    <script>document.querySelectorAll('a').forEach(link=>{
+        link.onclick= function(e){ //variavel qeu recebe do evento click
+            e.preventDefault() // previni que o evento padrão de navegação ocorra
+            const conteudo = document.getElementById('conteudo')
+            fetch(link.href) // fazendo um chamada AJAX
+            .then(resp => resp.text()) //resp.text pega o conteudo html da pagina
+            .then(html =>conteudo.innerHTML = html)
+        }
+    })</script>
+    <script> document.querySelectorAll('#rodape').forEach(link=>{
+        link.onclick= function(e){
+            e.preventDefault()
+            const conetudo = document.getElementById('rodandoope')
+            fetch(link.href)
+            .then(resp=>resp.text())
+            .then(html =>rodandoope.innerHTML=html)
+        }
+    })</script>
+</body>
+</html>
