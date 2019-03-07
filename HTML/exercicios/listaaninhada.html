@@ -1,6 +1,32 @@
 <h1>Projeto</h1>
-<ul>
+<ul class="tree">
     <li>
-        backend
+        <span wm-folder>backend</span>
+        <ul>
+            <ul>
+            <li>produto.js</li>
+</ul>
+        </ul>
+        
+        
+
+    </li>
+    <li>
+        <span wm-folder>frontend</span>
+        <ul>
+            produtos.js
+            serviços.js
+        </ul>
     </li>
 </ul>
+<link rel="stylesheet" href="http://flies.cod3r.com.br/curso-web/tree.css">
+<script>document.querySelectorAll('[wm-folder]').forEach(folder=> {
+    folder.onclick =function (e){
+        const  ul = folder.nextElementSibling
+        const d = ul.style.display
+        ul.style.display = d === 'none' ? 'block': 'none'
+        
+    }
+})
+
+</script>

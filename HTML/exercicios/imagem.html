@@ -1,0 +1,34 @@
+<div wm-slider>
+
+
+<p>
+    <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg" alt="Altura do Mudo" width="513" height="342">
+    
+</p>
+<p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem2.jpg" alt="Altura do Mudo" width="513" height="342">
+</p>
+<style>
+    p{
+        position: absolute;
+    }
+</style>
+</div>
+<script>
+
+    function mover (elem,inicio, fim, passo, callback   ){
+
+        const novoinicio= inicio - passo
+        if (novoinicio>= fim){
+            elem.style.left = novoinicio +'px'
+            setTimeout(()=>mover(elem, novoinicio,fim,passo, callback),7)
+        }else{
+            callback()
+        }
+    }
+    const p=document.querySelector('[wm-slider]>p')
+    p.style.display ='block'
+    mover(p,1500,-520,5,()=>{
+        console.log("terminaou!!")
+    })
+</script>
