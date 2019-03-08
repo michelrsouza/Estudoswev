@@ -10,7 +10,9 @@
     <div>Segundo</div>
     <div class="terceiro ultimo"><span wb-attrib>.terceiro .ultimo</span></div>
     <script>              
-        // ...
+        document.querySelector('#primeiro').classList.add('destaque')
+        const selecionar = seletor=> document.querySelectorAll(seletor).forEach(e=> e.classList.add('destaque'))
+        selecionar('.terceiro   .ultimo')
     </script>
 </body>
 </html>
