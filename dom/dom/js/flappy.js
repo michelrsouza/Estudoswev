@@ -43,8 +43,8 @@ function ParDeBarreiras(altura, abertura, x) {
     this.setX(x)
 }
 
-// const b = new ParDeBarreiras(700, 200, 800)
-// document.querySelector('[wm-flappy]').appendChild(b.elemento)
+const b = new ParDeBarreiras(700, 400, 400)
+document.querySelector('[wm-flappy]').appendChild(b.elemento)
 
 function Barreiras(altura, largura, abertura, espaco, notificarPonto) {
     this.pares = [
@@ -68,15 +68,42 @@ function Barreiras(altura, largura, abertura, espaco, notificarPonto) {
             const meio = largura / 2
             const cruzouOMeio = par.getX() + deslocamento >= meio
                 && par.getX() < meio
-            if(cruzouOMeio) notificarPonto()
+            if (cruzouOMeio) notificarPonto()
         })
     }
 }
-const barreiras = new Barreiras(700, 1200, 200, 400)
- const areaDoJogo = document.querySelector('[wm-flappy]')
 
- barreiras.pares.forEach(par => areaDoJogo.appendChild(par.elemento))
- setInterval(() => {
-     barreiras.animar()
-     passaro.animar()
- }, 20)
+
+function Passaro(alturaJogo) {
+
+    let voando = false
+    this.novoElemento('img', 'passaro')
+    this.elemento.src = 'img/passaro.png'
+    this.getY = parseInt(this.elemento.style.bottom.split('px')[0])
+    this.setY = () => this.elemento.style.bottom = `${px}`
+    window.onkeydown = e => voando = true
+    window.onkeyup = e => voando = false
+
+    this.animar = () => {
+        const novoY = this.getY() + (voando ? 8 : -5)
+        const alturaMaxima = alturaJogo - this.elemento.clientHeight
+        if (novoY < 0) {
+            this.setY(0)
+        } else if (novoY >= alturaMaxima) {
+            this.setY(alturaMaxima)
+        } else {
+            this.setY(novoY)
+        }
+    }
+    this.setY(alturaJogo/2)
+}
+const barreiras = new Barreiras(700, 1200, 295, 400)
+const areaDoJogo = document.querySelector('[wm-flappy]')
+const passaro = new Passaro(700)
+areaDoJogo.appendChild(passaro.elemento)
+barreiras.pares.forEach(par => areaDoJogo.appendChild(par.elemento))
+setInterval(() => {
+    
+    barreiras.animar()
+   
+}, 20)
